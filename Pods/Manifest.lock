@@ -1,21 +1,21 @@
 PODS:
   - SnapKit (5.6.0)
-  - SwiftBaseKit (0.1.1):
-    - SwiftBaseKit/Adapter (= 0.1.1)
-    - SwiftBaseKit/Config (= 0.1.1)
-    - SwiftBaseKit/Constant (= 0.1.1)
-    - SwiftBaseKit/Extension (= 0.1.1)
-    - SwiftBaseKit/Manager (= 0.1.1)
-  - SwiftBaseKit/Adapter (0.1.1):
+  - SwiftBaseKit (0.1.2):
+    - SwiftBaseKit/Adapter (= 0.1.2)
+    - SwiftBaseKit/Config (= 0.1.2)
+    - SwiftBaseKit/Constant (= 0.1.2)
+    - SwiftBaseKit/Extension (= 0.1.2)
+    - SwiftBaseKit/Manager (= 0.1.2)
+  - SwiftBaseKit/Adapter (0.1.2):
     - SwiftBaseKit/Config
     - SwiftBaseKit/Constant
     - SwiftBaseKit/Extension
-  - SwiftBaseKit/Config (0.1.1):
+  - SwiftBaseKit/Config (0.1.2):
     - SwiftBaseKit/Extension
-  - SwiftBaseKit/Constant (0.1.1):
+  - SwiftBaseKit/Constant (0.1.2):
     - SwiftBaseKit/Config
-  - SwiftBaseKit/Extension (0.1.1)
-  - SwiftBaseKit/Manager (0.1.1)
+  - SwiftBaseKit/Extension (0.1.2)
+  - SwiftBaseKit/Manager (0.1.2)
 
 DEPENDENCIES:
   - SnapKit (>= 4.2.0)
@@ -28,7 +28,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  SwiftBaseKit: 194f724d672de954ed301ee037f7c8fe6c74ed2d
+  SwiftBaseKit: c0baf74144d17de8f983df40825910e5505d43be
 
 PODFILE CHECKSUM: 553d29a7f56b2f71df9a5b568ebc27864ca07377
 

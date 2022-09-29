@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SwiftComponentsKit"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "SwiftComponentsKit contains some UI class"
 
   # This description is used to generate tags and improve search results.
@@ -97,6 +97,7 @@ Pod::Spec.new do |spec|
         
   spec.subspec "BaseViewController" do |ss|
     ss.source_files = "SwiftComponentsKit/BaseViewController/**/*.swift"
+    ss.resources = "SwiftComponentsKit/BaseViewController/**/*.png"
     ss.dependency "SnapKit"
     ss.dependency "SwiftBaseKit"
   end

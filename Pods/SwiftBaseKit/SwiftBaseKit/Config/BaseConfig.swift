@@ -42,10 +42,10 @@ public class BaseConfig {
     
 
     /// 返回按钮图片
-    public var backButtonImage      = UIImage()
+    public var backButtonImage: UIImage?
 
     /// 关闭按钮图片
-    public var closeButtonImage     = UIImage()
+    public var closeButtonImage: UIImage?
     
     
     /// 标签栏颜色 默认FFFFFF
@@ -68,13 +68,13 @@ public class BaseConfig {
     
     
     /// 文本色一
-    public var darkTextColor        = UIColor.dynamic(hex: "#333333", darkHex: "#FFFFFF")
+    public var blackTextColor        = UIColor.dynamic(hex: "#333333", darkHex: "#FFFFFF")
     
     /// 文本色二
-    public var darkGrayColor        = UIColor.dynamic(hex: "#666666", darkHex: "#BBBBBB")
+    public var grayTextColor        = UIColor.dynamic(hex: "#666666", darkHex: "#BBBBBB")
     
     /// 文本色三
-    public var lightGrayColor       = UIColor(hex: "#999999")
+    public var lightTextColor       = UIColor(hex: "#999999")
     
     /// 文本色四
     public var placeholderColor     = UIColor(hex: "#CCCCCC")
@@ -113,11 +113,11 @@ public class BaseConfig {
 
 public extension UIColor {
     
-    static var darkText         = BaseConfig.shared.darkTextColor
+    static var blackText         = BaseConfig.shared.blackTextColor
     
-    static var darkGray         = BaseConfig.shared.darkGrayColor
+    static var grayText         = BaseConfig.shared.grayTextColor
     
-    static var lightGray        = BaseConfig.shared.lightThemeColor
+    static var lightText        = BaseConfig.shared.lightTextColor
     
     static var placeholder      = BaseConfig.shared.placeholderColor
     
