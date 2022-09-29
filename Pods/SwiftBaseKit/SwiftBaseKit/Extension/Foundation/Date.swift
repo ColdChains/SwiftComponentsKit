@@ -30,6 +30,7 @@ public extension Date {
         return formatter.string(from: self).intValue
     }
     
+    /// 今天零点的时间
     var todayZeroDate: Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year,.month,.day, .hour, .minute, .second], from: self)
@@ -42,12 +43,14 @@ public extension Date {
         return d
     }
     
+    /// 前一天
     var previousDay: Date {
         var interval = timeIntervalSince1970;
         interval -= 24 * 60 * 60;
         return Date(timeIntervalSince1970: interval)
     }
     
+    /// 后一天
     var nextDay: Date {
         var interval = timeIntervalSince1970;
         interval += 24 * 60 * 60;
@@ -65,7 +68,7 @@ public extension Date {
 
 public extension String {
     
-    //从date到self的时间差
+    /// 从date到self的时间差
     func getTimeDifference(form date: Date) -> DateComponents {
         let formatter = DateFormatter()
         formatter.locale = Locale.init(identifier: "zh_CN")
@@ -76,7 +79,7 @@ public extension String {
         return components;
     }
     
-    //从self到date的时间差
+    /// 从self到date的时间差
     func getTimeDifference(to date: Date) -> DateComponents {
         let formatter = DateFormatter()
         formatter.locale = Locale.init(identifier: "zh_CN")
@@ -87,14 +90,14 @@ public extension String {
         return components;
     }
     
-    //从startDate到endDate的时间差
+    /// 从startDate到endDate的时间差
     func getTimeDifference(form startDate: Date, to endDate: Date) -> DateComponents {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate, to: endDate)
         return components;
     }
     
-    //字符串转日期
+    /// 字符串转日期
     func toDate(with format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         let formatter = DateFormatter()
         formatter.locale = Locale.init(identifier: "zh_CN")
@@ -138,6 +141,7 @@ public extension String {
         return toDate()?.toString(format)
     }
     
+    /// 时间戳转日期
     func timeIntervalToDateString() -> String? {
         return Date(timeIntervalSince1970: TimeInterval(intValue) / 1000).toString()
     }

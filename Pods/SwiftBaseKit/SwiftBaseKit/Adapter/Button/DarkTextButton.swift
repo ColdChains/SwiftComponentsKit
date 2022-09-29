@@ -9,7 +9,7 @@ import UIKit
 
 open class DarkTextButton: UIButton {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         setTitleColor(.darkText, for: .normal)
         setTitleColor(.darkGray, for: .highlighted)

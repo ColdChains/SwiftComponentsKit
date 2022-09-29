@@ -9,7 +9,7 @@ import UIKit
 
 open class CornerRadiusView: UIView {
 
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         layer.cornerRadius = BaseConfig.shared.cornerRadius
     }

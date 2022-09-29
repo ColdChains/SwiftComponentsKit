@@ -1,5 +1,5 @@
 //
-//  CircleGlobalButton.swift
+//  CircleThemeButton.swift
 //  SwiftBaseKit
 //
 //  Created by lax on 2022/9/28.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-open class CircleGlobalButton: UIButton {
+open class CircleThemeButton: UIButton {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         initView()
     }
@@ -35,9 +35,9 @@ open class CircleGlobalButton: UIButton {
     private func initBackgroundColor() {
         if isEnabled {
             if isHighlighted {
-                backgroundColor = .highlightGlobal
+                backgroundColor = .highlightTheme
             } else {
-                backgroundColor = .global
+                backgroundColor = .theme
             }
         } else {
             backgroundColor = .unable

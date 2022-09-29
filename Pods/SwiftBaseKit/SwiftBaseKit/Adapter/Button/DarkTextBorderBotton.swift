@@ -5,12 +5,11 @@
 //  Created by lax on 2022/9/28.
 //
 
-import Foundation
 import UIKit
 
 open class DarkTextBorderBotton: UIButton {
 
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         initView()
     }
@@ -25,7 +24,7 @@ open class DarkTextBorderBotton: UIButton {
     }
     
     private func initView() {
-        layer.cornerRadius = 4
+        layer.cornerRadius = BaseConfig.shared.cornerRadius
         layer.borderWidth = 1
         layer.borderColor = UIColor.darkText.cgColor
         setTitleColor(.darkText, for: .normal)

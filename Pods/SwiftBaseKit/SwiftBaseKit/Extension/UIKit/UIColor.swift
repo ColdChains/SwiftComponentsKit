@@ -71,6 +71,12 @@ public extension UIColor {
         return UIColor.dynamic(hex: hex, darkHex: darkHex, alpha: 1)
     }
     
+    /// 动态颜色
+    /// - Parameters:
+    ///   - hex: 浅色模式颜色
+    ///   - darkHex: 深色模式颜色
+    ///   - alpha: 透明度
+    /// - Returns: 颜色
     static func dynamic(hex: String, darkHex: String, alpha: CGFloat) -> UIColor {
         if #available(iOS 13.0, *) {
             return UIColor { (collection) -> UIColor in

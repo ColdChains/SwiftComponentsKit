@@ -9,7 +9,7 @@ import UIKit
 
 open class CornerRadiusShadowView: UIView {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         initView()
     }
@@ -25,7 +25,7 @@ open class CornerRadiusShadowView: UIView {
     
     private func initView() {
         backgroundColor = .container
-        layer.cornerRadius = 4
+        layer.cornerRadius = BaseConfig.shared.cornerRadius
         addShadow(.shadow)
     }
 

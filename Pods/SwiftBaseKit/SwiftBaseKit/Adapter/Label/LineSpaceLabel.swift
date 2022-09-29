@@ -9,15 +9,15 @@ import UIKit
 
 open class LineSpaceLabel: UILabel {
     
-    var lineSpace: CGFloat = 4 {
+    open var lineSpace: CGFloat = 4 {
         didSet {
             attributedText = text?.attributedString(lineSpace: lineSpace, alignment: textAlignment)
         }
     }
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
-        lineSpace = 4
+        lineSpace = BaseConfig.shared.lineSpace
     }
 
     required public init?(coder: NSCoder) {
@@ -26,7 +26,7 @@ open class LineSpaceLabel: UILabel {
     
     open override func awakeFromNib() {
         super.awakeFromNib()
-        lineSpace = 4
+        lineSpace = BaseConfig.shared.lineSpace
         addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     

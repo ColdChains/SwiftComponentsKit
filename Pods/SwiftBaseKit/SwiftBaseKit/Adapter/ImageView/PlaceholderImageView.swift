@@ -5,12 +5,11 @@
 //  Created by lax on 2022/9/28.
 //
 
-import Foundation
 import UIKit
 
 open class PlaceholderImageView: UIImageView {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         backgroundColor = .placeholder
     }

@@ -1,5 +1,5 @@
 //
-//  BaseColorConfig.swift
+//  LightGrayLabel.swift
 //  SwiftBaseKit
 //
 //  Created by lax on 2022/9/28.
@@ -9,7 +9,7 @@ import UIKit
 
 open class LightGrayLabel: UILabel {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         textColor = .lightGray
     }

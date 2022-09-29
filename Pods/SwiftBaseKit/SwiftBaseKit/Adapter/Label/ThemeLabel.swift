@@ -1,5 +1,5 @@
 //
-//  BaseColorConfig.swift
+//  ThemeLabel.swift
 //  SwiftBaseKit
 //
 //  Created by lax on 2022/9/28.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-open class GlobalLabel: UILabel {
+open class ThemeLabel: UILabel {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
-        textColor = .global
+        textColor = .theme
     }
 
     required public init?(coder: NSCoder) {
@@ -20,7 +20,7 @@ open class GlobalLabel: UILabel {
     
     open override func awakeFromNib() {
         super.awakeFromNib()
-        textColor = .global
+        textColor = .theme
     }
     
 }

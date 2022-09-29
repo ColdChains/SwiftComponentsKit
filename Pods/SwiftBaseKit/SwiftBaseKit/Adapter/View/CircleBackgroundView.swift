@@ -8,7 +8,15 @@
 import UIKit
 
 open class CircleBackgroundView: UIView {
-
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     open override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .background

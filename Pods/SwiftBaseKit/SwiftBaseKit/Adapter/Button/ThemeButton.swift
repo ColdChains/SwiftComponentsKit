@@ -1,5 +1,5 @@
 //
-//  GlobalButton.swift
+//  ThemeButton.swift
 //  SwiftBaseKit
 //
 //  Created by lax on 2022/9/28.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-open class GlobalButton: UIButton {
+open class ThemeButton: UIButton {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         initView()
     }
@@ -25,8 +25,8 @@ open class GlobalButton: UIButton {
     
     private func initView() {
         if isEnabled {
-            setTitleColor(.global, for: .normal)
-            setTitleColor(.highlightGlobal, for: .highlighted)
+            setTitleColor(.theme, for: .normal)
+            setTitleColor(.highlightTheme, for: .highlighted)
         } else {
             setTitleColor(.lightGray, for: .normal)
             setTitleColor(.darkGray, for: .highlighted)
@@ -37,8 +37,8 @@ open class GlobalButton: UIButton {
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == "enabled" {
             if isEnabled {
-                setTitleColor(.global, for: .normal)
-                setTitleColor(.highlightGlobal, for: .highlighted)
+                setTitleColor(.theme, for: .normal)
+                setTitleColor(.highlightTheme, for: .highlighted)
             } else {
                 setTitleColor(.lightGray, for: .normal)
                 setTitleColor(.darkGray, for: .highlighted)

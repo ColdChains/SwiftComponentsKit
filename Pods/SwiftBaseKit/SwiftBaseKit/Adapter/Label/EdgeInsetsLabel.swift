@@ -9,7 +9,7 @@ import UIKit
 
 open class EdgeInsetsLabel: UILabel {
     
-    var edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+    open var edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     
     //修改绘制文字的区域
     open override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {

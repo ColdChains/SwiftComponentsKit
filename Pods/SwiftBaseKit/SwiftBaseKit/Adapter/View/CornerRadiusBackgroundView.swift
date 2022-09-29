@@ -5,15 +5,14 @@
 //  Created by lax on 2022/9/28.
 //
 
-import Foundation
 import UIKit
 
 open class CornerRadiusBackgroundView: UIView {
     
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         backgroundColor = .background
-        layer.cornerRadius = 4
+        layer.cornerRadius = BaseConfig.shared.cornerRadius
     }
     
     required public init?(coder: NSCoder) {
@@ -23,7 +22,7 @@ open class CornerRadiusBackgroundView: UIView {
     open override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .background
-        layer.cornerRadius = 4
+        layer.cornerRadius = BaseConfig.shared.cornerRadius
     }
 
 }

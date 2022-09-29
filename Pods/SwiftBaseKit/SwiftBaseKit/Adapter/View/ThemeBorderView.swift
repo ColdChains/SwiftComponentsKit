@@ -1,5 +1,5 @@
 //
-//  GlobalBorderButton.swift
+//  ThemeBorderView.swift
 //  SwiftBaseKit
 //
 //  Created by lax on 2022/9/28.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-open class GlobalBorderButton: UIButton {
+open class ThemeBorderView: UIView {
 
-    override init(frame: CGRect = CGRect()) {
+    public override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         initView()
     }
@@ -24,16 +24,14 @@ open class GlobalBorderButton: UIButton {
     }
     
     private func initView() {
-        layer.cornerRadius = 4
+        layer.cornerRadius = BaseConfig.shared.cornerRadius
         layer.borderWidth = 1
-        layer.borderColor = UIColor.global.cgColor
-        setTitleColor(.global, for: .normal)
-        setTitleColor(.highlightGlobal, for: .highlighted)
+        layer.borderColor = UIColor.theme.cgColor
     }
     
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        layer.borderColor = UIColor.global.cgColor
+        layer.borderColor = UIColor.theme.cgColor
     }
 
 }

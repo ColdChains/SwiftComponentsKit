@@ -8,6 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		0201B26CF564EC1BF0C331EF /* Pods_SwiftComponentsKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCA6B6F3546B28B0E772F69 /* Pods_SwiftComponentsKitDemo.framework */; };
+		183D7A9728E59576001D727C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7A8B28E59576001D727C /* ViewController.swift */; };
+		183D7A9828E59576001D727C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7A8C28E59576001D727C /* WebViewController.swift */; };
+		183D7A9928E59576001D727C /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7A8D28E59576001D727C /* NavigationController.swift */; };
+		183D7A9A28E59576001D727C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7A8E28E59576001D727C /* TabBarController.swift */; };
+		183D7A9B28E59576001D727C /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7A9028E59576001D727C /* ProgressView.swift */; };
+		183D7A9C28E59576001D727C /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7A9128E59576001D727C /* NavigationBar.swift */; };
+		183D7A9D28E59576001D727C /* icon_navigation_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183D7A9328E59576001D727C /* icon_navigation_close@2x.png */; };
+		183D7A9E28E59576001D727C /* icon_navigation_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183D7A9428E59576001D727C /* icon_navigation_close@3x.png */; };
+		183D7A9F28E59576001D727C /* icon_navigation_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183D7A9528E59576001D727C /* icon_navigation_back@2x.png */; };
+		183D7AA028E59576001D727C /* icon_navigation_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183D7A9628E59576001D727C /* icon_navigation_back@3x.png */; };
+		183D7AA828E595DC001D727C /* RecyclePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AA328E595DC001D727C /* RecyclePageControl.swift */; };
+		183D7AA928E595DC001D727C /* RecyclePageControlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AA428E595DC001D727C /* RecyclePageControlProtocol.swift */; };
+		183D7AAA28E595DC001D727C /* RecycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AA528E595DC001D727C /* RecycleView.swift */; };
+		183D7AAC28E595DC001D727C /* RecycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AA728E595DC001D727C /* RecycleScrollView.swift */; };
+		183D7AB428E596C0001D727C /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AAE28E596C0001D727C /* MenuBar.swift */; };
+		183D7AB528E596C0001D727C /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AAF28E596C0001D727C /* MenuBarView.swift */; };
+		183D7AB628E596C0001D727C /* MenuBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB028E596C0001D727C /* MenuBarScrollView.swift */; };
+		183D7AB728E596C0001D727C /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB128E596C0001D727C /* MenuBarController.swift */; };
+		183D7AB828E596C0001D727C /* MenuBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB328E596C0001D727C /* MenuBarProtocol.swift */; };
+		183D7ABB28E596D8001D727C /* PresentMenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB928E596D8001D727C /* PresentMenuBarController.swift */; };
 		18868D6228E435C300E9AE04 /* SwiftComponentsKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 18868D6128E435C300E9AE04 /* SwiftComponentsKit.docc */; };
 		18868D6828E435C400E9AE04 /* SwiftComponentsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18868D5D28E435C300E9AE04 /* SwiftComponentsKit.framework */; };
 		18868D6D28E435C400E9AE04 /* SwiftComponentsKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868D6C28E435C400E9AE04 /* SwiftComponentsKitTests.swift */; };
@@ -52,6 +72,26 @@
 
 /* Begin PBXFileReference section */
 		15462C3AFCE476A54E43D8F1 /* Pods-SwiftComponentsKit-SwiftComponentsKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftComponentsKit-SwiftComponentsKitTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftComponentsKit-SwiftComponentsKitTests/Pods-SwiftComponentsKit-SwiftComponentsKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		183D7A8B28E59576001D727C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		183D7A8C28E59576001D727C /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		183D7A8D28E59576001D727C /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		183D7A8E28E59576001D727C /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		183D7A9028E59576001D727C /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		183D7A9128E59576001D727C /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		183D7A9328E59576001D727C /* icon_navigation_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navigation_close@2x.png"; sourceTree = "<group>"; };
+		183D7A9428E59576001D727C /* icon_navigation_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navigation_close@3x.png"; sourceTree = "<group>"; };
+		183D7A9528E59576001D727C /* icon_navigation_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navigation_back@2x.png"; sourceTree = "<group>"; };
+		183D7A9628E59576001D727C /* icon_navigation_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_navigation_back@3x.png"; sourceTree = "<group>"; };
+		183D7AA328E595DC001D727C /* RecyclePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecyclePageControl.swift; sourceTree = "<group>"; };
+		183D7AA428E595DC001D727C /* RecyclePageControlProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecyclePageControlProtocol.swift; sourceTree = "<group>"; };
+		183D7AA528E595DC001D727C /* RecycleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleView.swift; sourceTree = "<group>"; };
+		183D7AA728E595DC001D727C /* RecycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleScrollView.swift; sourceTree = "<group>"; };
+		183D7AAE28E596C0001D727C /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		183D7AAF28E596C0001D727C /* MenuBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		183D7AB028E596C0001D727C /* MenuBarScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarScrollView.swift; sourceTree = "<group>"; };
+		183D7AB128E596C0001D727C /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		183D7AB328E596C0001D727C /* MenuBarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarProtocol.swift; sourceTree = "<group>"; };
+		183D7AB928E596D8001D727C /* PresentMenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuBarController.swift; sourceTree = "<group>"; };
 		18868D5D28E435C300E9AE04 /* SwiftComponentsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftComponentsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18868D6028E435C300E9AE04 /* SwiftComponentsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftComponentsKit.h; sourceTree = "<group>"; };
 		18868D6128E435C300E9AE04 /* SwiftComponentsKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SwiftComponentsKit.docc; sourceTree = "<group>"; };
@@ -107,6 +147,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		183D7A8728E594ED001D727C /* MenuBarController */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AB928E596D8001D727C /* PresentMenuBarController.swift */,
+				183D7AB128E596C0001D727C /* MenuBarController.swift */,
+				183D7AB228E596C0001D727C /* Protocol */,
+				183D7AAD28E596C0001D727C /* View */,
+			);
+			path = MenuBarController;
+			sourceTree = "<group>";
+		};
+		183D7A8928E5951B001D727C /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				183D7A8A28E59576001D727C /* Controller */,
+				183D7A9228E59576001D727C /* Image */,
+				183D7A8F28E59576001D727C /* View */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		183D7A8A28E59576001D727C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				183D7A8B28E59576001D727C /* ViewController.swift */,
+				183D7A8C28E59576001D727C /* WebViewController.swift */,
+				183D7A8D28E59576001D727C /* NavigationController.swift */,
+				183D7A8E28E59576001D727C /* TabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		183D7A8F28E59576001D727C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				183D7A9028E59576001D727C /* ProgressView.swift */,
+				183D7A9128E59576001D727C /* NavigationBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		183D7A9228E59576001D727C /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				183D7A9328E59576001D727C /* icon_navigation_close@2x.png */,
+				183D7A9428E59576001D727C /* icon_navigation_close@3x.png */,
+				183D7A9528E59576001D727C /* icon_navigation_back@2x.png */,
+				183D7A9628E59576001D727C /* icon_navigation_back@3x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		183D7AA128E595C4001D727C /* RecycleView */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AA228E595DC001D727C /* PageControl */,
+				183D7AA728E595DC001D727C /* RecycleScrollView.swift */,
+				183D7AA528E595DC001D727C /* RecycleView.swift */,
+			);
+			path = RecycleView;
+			sourceTree = "<group>";
+		};
+		183D7AA228E595DC001D727C /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AA328E595DC001D727C /* RecyclePageControl.swift */,
+				183D7AA428E595DC001D727C /* RecyclePageControlProtocol.swift */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
+		183D7AAD28E596C0001D727C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AAE28E596C0001D727C /* MenuBar.swift */,
+				183D7AAF28E596C0001D727C /* MenuBarView.swift */,
+				183D7AB028E596C0001D727C /* MenuBarScrollView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		183D7AB228E596C0001D727C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AB328E596C0001D727C /* MenuBarProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		18868D5328E435C300E9AE04 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +262,9 @@
 			isa = PBXGroup;
 			children = (
 				18868D6028E435C300E9AE04 /* SwiftComponentsKit.h */,
+				183D7A8928E5951B001D727C /* BaseViewController */,
+				183D7A8728E594ED001D727C /* MenuBarController */,
+				183D7AA128E595C4001D727C /* RecycleView */,
 				18868D8F28E4377200E9AE04 /* TipsView */,
 				18868D6128E435C300E9AE04 /* SwiftComponentsKit.docc */,
 			);
@@ -312,6 +444,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183D7A9D28E59576001D727C /* icon_navigation_close@2x.png in Resources */,
+				183D7AA028E59576001D727C /* icon_navigation_back@3x.png in Resources */,
+				183D7A9E28E59576001D727C /* icon_navigation_close@3x.png in Resources */,
+				183D7A9F28E59576001D727C /* icon_navigation_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,10 +578,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183D7A9728E59576001D727C /* ViewController.swift in Sources */,
+				183D7AB528E596C0001D727C /* MenuBarView.swift in Sources */,
+				183D7A9A28E59576001D727C /* TabBarController.swift in Sources */,
+				183D7AAA28E595DC001D727C /* RecycleView.swift in Sources */,
+				183D7A9828E59576001D727C /* WebViewController.swift in Sources */,
 				18868D9528E4377200E9AE04 /* ToastView.swift in Sources */,
+				183D7AA828E595DC001D727C /* RecyclePageControl.swift in Sources */,
+				183D7AB828E596C0001D727C /* MenuBarProtocol.swift in Sources */,
 				18868D9428E4377200E9AE04 /* LoadView.swift in Sources */,
+				183D7A9C28E59576001D727C /* NavigationBar.swift in Sources */,
 				18868D9328E4377200E9AE04 /* HUDView.swift in Sources */,
+				183D7AB728E596C0001D727C /* MenuBarController.swift in Sources */,
+				183D7ABB28E596D8001D727C /* PresentMenuBarController.swift in Sources */,
+				183D7AA928E595DC001D727C /* RecyclePageControlProtocol.swift in Sources */,
+				183D7A9928E59576001D727C /* NavigationController.swift in Sources */,
 				18868D6228E435C300E9AE04 /* SwiftComponentsKit.docc in Sources */,
+				183D7A9B28E59576001D727C /* ProgressView.swift in Sources */,
+				183D7AAC28E595DC001D727C /* RecycleScrollView.swift in Sources */,
+				183D7AB428E596C0001D727C /* MenuBar.swift in Sources */,
+				183D7AB628E596C0001D727C /* MenuBarScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
