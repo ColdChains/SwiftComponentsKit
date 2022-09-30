@@ -8,7 +8,7 @@
 import UIKit
 import SwiftComponentsKit
 
-class RecycleTestViewController: TipsTestViewController {
+class RecycleTestViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

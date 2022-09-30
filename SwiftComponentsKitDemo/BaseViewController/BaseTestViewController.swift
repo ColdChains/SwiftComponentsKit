@@ -8,12 +8,10 @@
 import UIKit
 import SwiftComponentsKit
 
-class BaseTestViewController: TipsTestViewController {
+class BaseTestViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationController?.navigationBar.isHidden = true
         
         showNavigationBar = true
         navigationBar?.titleLabel?.text = "hello"

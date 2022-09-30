@@ -8,7 +8,7 @@
 import UIKit
 import SwiftComponentsKit
 
-class TipsTestViewController: SwiftComponentsKit.ViewController {
+class TipsTestViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

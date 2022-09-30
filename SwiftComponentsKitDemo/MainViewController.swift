@@ -30,8 +30,6 @@ class MainViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = true
-        
         showNavigationBar = true
         navigationBar?.leftItem = nil
         navigationBar?.titleLabel?.text = "SwiftComponentsKitDemo"
@@ -95,7 +93,6 @@ extension MainViewController: UITableViewDelegate {
             let vc = PresentViewController()
             let pmbc = PresentMenuBarController()
             pmbc.menuBar = topView;
-            pmbc.topCornerRadius = 16;
             pmbc.viewControllers = [vc]
             
             // 接管状态栏样式
