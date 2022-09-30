@@ -8,12 +8,11 @@
 import UIKit
 import SwiftComponentsKit
 
-class ViewController: SwiftComponentsKit.ViewController {
+class TipsTestViewController: SwiftComponentsKit.ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showNavigationBar = true
-        navigationBar?.titleLabel?.text = "Title"
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

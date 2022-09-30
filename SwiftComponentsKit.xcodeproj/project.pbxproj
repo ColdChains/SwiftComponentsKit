@@ -28,12 +28,20 @@
 		183D7AB728E596C0001D727C /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB128E596C0001D727C /* MenuBarController.swift */; };
 		183D7AB828E596C0001D727C /* MenuBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB328E596C0001D727C /* MenuBarProtocol.swift */; };
 		183D7ABB28E596D8001D727C /* PresentMenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AB928E596D8001D727C /* PresentMenuBarController.swift */; };
+		183D7B0528E6871F001D727C /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AFA28E6871E001D727C /* BaseTestViewController.swift */; };
+		183D7B0628E6871F001D727C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AFB28E6871E001D727C /* MainViewController.swift */; };
+		183D7B0728E6871F001D727C /* PresentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183D7AFD28E6871E001D727C /* PresentViewController.xib */; };
+		183D7B0828E6871F001D727C /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7AFE28E6871E001D727C /* PresentViewController.swift */; };
+		183D7B0928E6871F001D727C /* RecycleTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7B0028E6871F001D727C /* RecycleTestViewController.swift */; };
+		183D7B0A28E6871F001D727C /* MenuBarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7B0228E6871F001D727C /* MenuBarContentViewController.swift */; };
+		183D7B0B28E6871F001D727C /* MenuBarContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183D7B0328E6871F001D727C /* MenuBarContentViewController.xib */; };
+		183D7B0C28E6871F001D727C /* MenuBarTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D7B0428E6871F001D727C /* MenuBarTestViewController.swift */; };
 		18868D6228E435C300E9AE04 /* SwiftComponentsKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 18868D6128E435C300E9AE04 /* SwiftComponentsKit.docc */; };
 		18868D6828E435C400E9AE04 /* SwiftComponentsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18868D5D28E435C300E9AE04 /* SwiftComponentsKit.framework */; };
 		18868D6D28E435C400E9AE04 /* SwiftComponentsKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868D6C28E435C400E9AE04 /* SwiftComponentsKitTests.swift */; };
 		18868D6E28E435C400E9AE04 /* SwiftComponentsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 18868D6028E435C300E9AE04 /* SwiftComponentsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18868D7E28E435D100E9AE04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868D7D28E435D100E9AE04 /* AppDelegate.swift */; };
-		18868D8228E435D100E9AE04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868D8128E435D100E9AE04 /* ViewController.swift */; };
+		18868D8228E435D100E9AE04 /* TipsTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868D8128E435D100E9AE04 /* TipsTestViewController.swift */; };
 		18868D8528E435D100E9AE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18868D8328E435D100E9AE04 /* Main.storyboard */; };
 		18868D8728E435D500E9AE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18868D8628E435D500E9AE04 /* Assets.xcassets */; };
 		18868D8A28E435D500E9AE04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18868D8828E435D500E9AE04 /* LaunchScreen.storyboard */; };
@@ -92,6 +100,14 @@
 		183D7AB128E596C0001D727C /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		183D7AB328E596C0001D727C /* MenuBarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarProtocol.swift; sourceTree = "<group>"; };
 		183D7AB928E596D8001D727C /* PresentMenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuBarController.swift; sourceTree = "<group>"; };
+		183D7AFA28E6871E001D727C /* BaseTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
+		183D7AFB28E6871E001D727C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		183D7AFD28E6871E001D727C /* PresentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentViewController.xib; sourceTree = "<group>"; };
+		183D7AFE28E6871E001D727C /* PresentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
+		183D7B0028E6871F001D727C /* RecycleTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleTestViewController.swift; sourceTree = "<group>"; };
+		183D7B0228E6871F001D727C /* MenuBarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarContentViewController.swift; sourceTree = "<group>"; };
+		183D7B0328E6871F001D727C /* MenuBarContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuBarContentViewController.xib; sourceTree = "<group>"; };
+		183D7B0428E6871F001D727C /* MenuBarTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarTestViewController.swift; sourceTree = "<group>"; };
 		18868D5D28E435C300E9AE04 /* SwiftComponentsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftComponentsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18868D6028E435C300E9AE04 /* SwiftComponentsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftComponentsKit.h; sourceTree = "<group>"; };
 		18868D6128E435C300E9AE04 /* SwiftComponentsKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SwiftComponentsKit.docc; sourceTree = "<group>"; };
@@ -99,7 +115,7 @@
 		18868D6C28E435C400E9AE04 /* SwiftComponentsKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftComponentsKitTests.swift; sourceTree = "<group>"; };
 		18868D7B28E435D100E9AE04 /* SwiftComponentsKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftComponentsKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18868D7D28E435D100E9AE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18868D8128E435D100E9AE04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		18868D8128E435D100E9AE04 /* TipsTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTestViewController.swift; sourceTree = "<group>"; };
 		18868D8428E435D100E9AE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18868D8628E435D500E9AE04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18868D8928E435D500E9AE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -236,6 +252,49 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		183D7AF928E6871E001D727C /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AFA28E6871E001D727C /* BaseTestViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		183D7AFC28E6871E001D727C /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				183D7AFE28E6871E001D727C /* PresentViewController.swift */,
+				183D7AFD28E6871E001D727C /* PresentViewController.xib */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		183D7AFF28E6871F001D727C /* RecycleView */ = {
+			isa = PBXGroup;
+			children = (
+				183D7B0028E6871F001D727C /* RecycleTestViewController.swift */,
+			);
+			path = RecycleView;
+			sourceTree = "<group>";
+		};
+		183D7B0128E6871F001D727C /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				183D7B0228E6871F001D727C /* MenuBarContentViewController.swift */,
+				183D7B0328E6871F001D727C /* MenuBarContentViewController.xib */,
+				183D7B0428E6871F001D727C /* MenuBarTestViewController.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		183D7B0D28E6875C001D727C /* TipsView */ = {
+			isa = PBXGroup;
+			children = (
+				18868D8128E435D100E9AE04 /* TipsTestViewController.swift */,
+			);
+			path = TipsView;
+			sourceTree = "<group>";
+		};
 		18868D5328E435C300E9AE04 = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +342,12 @@
 			isa = PBXGroup;
 			children = (
 				18868D7D28E435D100E9AE04 /* AppDelegate.swift */,
-				18868D8128E435D100E9AE04 /* ViewController.swift */,
+				183D7AFB28E6871E001D727C /* MainViewController.swift */,
+				183D7AF928E6871E001D727C /* BaseViewController */,
+				183D7B0128E6871F001D727C /* MenuBar */,
+				183D7AFC28E6871E001D727C /* Present */,
+				183D7AFF28E6871F001D727C /* RecycleView */,
+				183D7B0D28E6875C001D727C /* TipsView */,
 				18868D8328E435D100E9AE04 /* Main.storyboard */,
 				18868D8628E435D500E9AE04 /* Assets.xcassets */,
 				18868D8828E435D500E9AE04 /* LaunchScreen.storyboard */,
@@ -463,7 +527,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18868D8A28E435D500E9AE04 /* LaunchScreen.storyboard in Resources */,
+				183D7B0B28E6871F001D727C /* MenuBarContentViewController.xib in Resources */,
 				18868D8728E435D500E9AE04 /* Assets.xcassets in Resources */,
+				183D7B0728E6871F001D727C /* PresentViewController.xib in Resources */,
 				18868D8528E435D100E9AE04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,8 +679,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18868D8228E435D100E9AE04 /* ViewController.swift in Sources */,
+				18868D8228E435D100E9AE04 /* TipsTestViewController.swift in Sources */,
 				18868D7E28E435D100E9AE04 /* AppDelegate.swift in Sources */,
+				183D7B0A28E6871F001D727C /* MenuBarContentViewController.swift in Sources */,
+				183D7B0C28E6871F001D727C /* MenuBarTestViewController.swift in Sources */,
+				183D7B0828E6871F001D727C /* PresentViewController.swift in Sources */,
+				183D7B0528E6871F001D727C /* BaseTestViewController.swift in Sources */,
+				183D7B0928E6871F001D727C /* RecycleTestViewController.swift in Sources */,
+				183D7B0628E6871F001D727C /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
