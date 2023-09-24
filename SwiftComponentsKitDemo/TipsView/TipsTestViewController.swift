@@ -13,6 +13,7 @@ class TipsTestViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showNavigationBar = true
+        navigationBar?.titleLabel?.text = "TipsView"
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -39,7 +40,7 @@ class TipsTestViewController: ViewController {
 
     func testToastView() {
 
-        ToastView.defaultPosition = .bottom
+        ToastViewConfig.shared.position = .bottom
 
 //        if #available(iOS 13.0, *) {
 //            ToastView.showError("adfadf", image: UIImage(systemName: "square.and.arrow.up"))
@@ -51,7 +52,7 @@ class TipsTestViewController: ViewController {
 
     func testLoadView() {
 
-        LoadView.defaultErrorMessage = "hahaha"
+        LoadViewConfig.shared.errorMessage = "hahaha"
 
         view.loading("loading")
 

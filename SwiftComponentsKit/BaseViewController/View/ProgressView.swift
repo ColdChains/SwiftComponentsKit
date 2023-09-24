@@ -22,7 +22,7 @@ open class ProgressView: UIView {
     
     private lazy var foreView: UIView = {
         let view = UIView()
-        view.backgroundColor = BaseConfig.shared.progressColor
+        view.backgroundColor = BaseViewControllerConfig.shared.progressColor
         return view;
     }()
     

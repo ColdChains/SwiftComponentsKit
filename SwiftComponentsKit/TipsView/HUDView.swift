@@ -8,33 +8,73 @@
 import UIKit
 import SnapKit
 
+public struct HUDViewConfig {
+    
+    public static var shared = HUDViewConfig()
+    
+    /// tag
+    public var hudViewTag = 910
+    
+    /// 背景颜色
+    public var backgroundColor = UIColor(white: 0, alpha: 0.6)
+    
+    /// 阴影颜色
+    public var shadowColor = UIColor(white: 1, alpha: 0.02).cgColor
+    
+    /// 指示器颜色
+    public var indicatorColor: UIColor = .white
+    
+    /// 圆角
+    public var cornerRadius: CGFloat = 8
+    
+    /// 字体大小
+    public var fontSize: Double = 14
+    
+    /// 字体颜色
+    public var textColor: UIColor = .white
+    
+    /// 加载中的提示
+    public var loadMessage = "正在加载"
+    
+    /// 加载缓慢提示
+    public var loadSlowMessage = "加载缓慢"
+    
+    /// 设置加载缓慢时间 默认5s 设置0则不出现加载缓慢
+    public var loadSlowTimeInterval = 5.0
+    
+    /// 加载缓慢颜色
+    public var loadSlowColor = UIColor.orange
+    
+}
+
 extension HUDView {
     
     public enum Style {
         case `default`
         case light
+        case dark
     }
     
 }
 
-public class HUDView: UIView {
+open class HUDView: UIView {
     
     private(set) var style: Style = .default {
         didSet {
             switch style {
+            case .default:
+                setStyleDefault()
             case .light:
                 setStyleLight()
-            default:
-                setStyleDefault()
+            case .dark:
+                setStyleDark()
             }
         }
     }
     
     private(set) var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 8
-        view.layer.shadowColor = UIColor(white: 0, alpha: 0.02).cgColor
+        view.layer.cornerRadius = HUDViewConfig.shared.cornerRadius
         view.layer.shadowOffset = CGSize()
         view.layer.shadowOpacity = 1
         view.layer.shadowRadius = 0
@@ -51,18 +91,17 @@ public class HUDView: UIView {
     private(set) lazy var tipsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
-        label.textColor = .darkGray
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: HUDViewConfig.shared.fontSize)
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tag = HUDView.hudViewTag
+        tag = HUDViewConfig.shared.hudViewTag
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
@@ -72,7 +111,7 @@ extension HUDView {
     
     public func show(in view: UIView?, style: Style = .default, top offset: CGFloat = 0, message: String?) {
         guard let _ = view else { return }
-        view!.viewWithTag(HUDView.hudViewTag)?.removeFromSuperview()
+        view!.viewWithTag(HUDViewConfig.shared.hudViewTag)?.removeFromSuperview()
         view!.addSubview(self)
         
         var rect = view!.frame
@@ -105,8 +144,8 @@ extension HUDView {
         tipsLabel.text = message
         self.style = style
         
-        if (HUDView.loadSlowTimeInterval > 0) {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + HUDView.loadSlowTimeInterval) {
+        if (HUDViewConfig.shared.loadSlowTimeInterval > 0) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + HUDViewConfig.shared.loadSlowTimeInterval) {
                 self.loadSlow()
             }
         }
@@ -117,58 +156,46 @@ extension HUDView {
     }
     
     private func loadSlow() {
-        indicatorView.color = HUDView.loadSlowColor
-        tipsLabel.textColor = HUDView.loadSlowColor
-        tipsLabel.text = HUDView.loadSlowMessage
+        indicatorView.color = HUDViewConfig.shared.loadSlowColor
+        tipsLabel.textColor = HUDViewConfig.shared.loadSlowColor
+        tipsLabel.text = HUDViewConfig.shared.loadSlowMessage
     }
     
     private func setStyleDefault() {
-        backgroundColor = .clear
-        contentView.backgroundColor = UIColor(white: 0, alpha: 0.6)
-        indicatorView.style = .whiteLarge
-        indicatorView.color = .white
-        tipsLabel.textColor = .white
+        contentView.backgroundColor = HUDViewConfig.shared.backgroundColor
+        contentView.layer.shadowColor = HUDViewConfig.shared.shadowColor
+        indicatorView.color = HUDViewConfig.shared.indicatorColor
+        tipsLabel.textColor = HUDViewConfig.shared.textColor
     }
     
     private func setStyleLight() {
-        backgroundColor = .clear
         contentView.backgroundColor = UIColor(white: 1, alpha: 0.6)
-        indicatorView.style = .whiteLarge
+        contentView.layer.shadowColor = UIColor(white: 0, alpha: 0.02).cgColor
         indicatorView.color = .darkGray
         tipsLabel.textColor = .lightGray
+    }
+    
+    private func setStyleDark() {
+        contentView.backgroundColor = UIColor(white: 0, alpha: 0.6)
+        contentView.layer.shadowColor = UIColor(white: 1, alpha: 0.02).cgColor
+        indicatorView.color = .white
+        tipsLabel.textColor = .white
     }
 
 }
 
 extension HUDView {
     
-    // tag
-    public static var hudViewTag = 910
-    
-    // 加载中的提示
-    public static var defaultMessage = "正在加载"
-    
-    // 加载缓慢提示
-    public static var loadSlowMessage = "加载缓慢"
-    
-    // 设置加载缓慢时间 默认5s 设置0则不出现加载缓慢
-    public static var loadSlowTimeInterval = 5.0
-    
-    // 加载缓慢颜色
-    public static var loadSlowColor = UIColor.orange
-    
-    public static let shared = HUDView()
-    
     /// 开始动画
     /// - Parameter view: 目标视图
     /// - Parameter message: 提示文字
-    public static func show(in view: UIView?, message: String? = HUDView.defaultMessage) {
-        HUDView.shared.show(in: view, message: message)
+    public static func show(in view: UIView? = UIApplication.shared.keyWindow, message: String? = HUDViewConfig.shared.loadMessage) {
+        view?.showHUD(message)
     }
     
     /// 结束动画
     public static func hide() {
-        HUDView.shared.hide()
+        UIApplication.shared.keyWindow?.hideHUD()
     }
     
 }
@@ -177,8 +204,8 @@ extension UIView {
     
     /// 开始动画
     /// - Parameter message: 提示文字
-    public func showHUD(_ message: String? = HUDView.defaultMessage) {
-        if let hudView = viewWithTag(HUDView.hudViewTag) as? HUDView {
+    public func showHUD(_ message: String? = HUDViewConfig.shared.loadMessage) {
+        if let hudView = viewWithTag(HUDViewConfig.shared.hudViewTag) as? HUDView {
             bringSubviewToFront(hudView)
         } else {
             let hudView = HUDView()
@@ -188,7 +215,7 @@ extension UIView {
     
     /// 结束动画
     public func hideHUD() {
-        viewWithTag(HUDView.hudViewTag)?.removeFromSuperview()
+        viewWithTag(HUDViewConfig.shared.hudViewTag)?.removeFromSuperview()
     }
     
 }

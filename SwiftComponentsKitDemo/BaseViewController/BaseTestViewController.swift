@@ -14,7 +14,7 @@ class BaseTestViewController: ViewController {
         super.viewDidLoad()
         
         showNavigationBar = true
-        navigationBar?.titleLabel?.text = "hello"
+        navigationBar?.titleLabel?.text = "BaseViewController"
         
     }
 

@@ -8,6 +8,42 @@
 import UIKit
 import SnapKit
 
+public struct LoadViewConfig {
+    
+    public static var shared = LoadViewConfig()
+    
+    /// tag
+    public var loadViewTag = 900
+    
+    /// 指示器颜色
+    public var indicatorColor: UIColor = .lightGray
+    
+    /// 字体大小
+    public var fontSize: Double = 14
+    
+    /// 字体颜色
+    public var textColor: UIColor = .darkGray
+    
+    /// 加载中的提示
+    public var loadMessage = "正在加载"
+    
+    /// 空数据的提示
+    public var nodataMessage = "暂无数据"
+    
+    /// 空数据的图片
+    public var nodataImage: UIImage?
+    
+    /// 加载失败的提示
+    public var errorMessage = "加载失败了，请稍后再试"
+    
+    /// 加载失败的图片
+    public var errorImage: UIImage?
+    
+    /// 图片的竖向偏移量
+    public var imageViewOffSetY: CGFloat = 0
+    
+}
+
 extension LoadView {
     
     public enum Status {
@@ -19,7 +55,7 @@ extension LoadView {
     
 }
 
-public class LoadView: UIView {
+open class LoadView: UIView {
     
     fileprivate(set) var loadMessage: String?
     
@@ -84,7 +120,7 @@ public class LoadView: UIView {
     
     private(set) lazy var indicatorView: UIActivityIndicatorView = {
         let active = UIActivityIndicatorView()
-        active.color = .lightGray
+        active.color = LoadViewConfig.shared.indicatorColor
         active.hidesWhenStopped = true
         active.startAnimating()
         return active
@@ -99,15 +135,15 @@ public class LoadView: UIView {
     private(set) lazy var tipsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .darkGray
+        label.textColor = LoadViewConfig.shared.textColor
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: LoadViewConfig.shared.fontSize)
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tag = LoadView.loadViewTag
+        tag = LoadViewConfig.shared.loadViewTag
         addGestureRecognizer(tapGesture)
     }
     
@@ -139,7 +175,7 @@ extension LoadView {
         nodataImage: UIImage? = nil
     ) {
         
-        view.viewWithTag(LoadView.loadViewTag)?.removeFromSuperview()
+        view.viewWithTag(LoadViewConfig.shared.loadViewTag)?.removeFromSuperview()
         view.addSubview(self)
         
         snp.makeConstraints { (make) in
@@ -187,35 +223,12 @@ extension LoadView {
     
 }
 
-extension LoadView {
-    
-    // tag
-    public static var loadViewTag = 900
-    
-    // 加载中的提示
-    public static var defaultLoadMessage = "正在加载"
-    
-    // 空数据的提示
-    public static var defaultNodataMessage = "暂无数据"
-    // 空数据的图片
-    public static var defaultNodataImage: UIImage?
-    
-    // 加载失败的提示
-    public static var defaultErrorMessage = "加载失败了，请稍后再试"
-    // 加载失败的图片
-    public static var defaultErrorImage: UIImage?
-    
-    // 图片的竖向偏移量
-    public static var defaultImageViewOffSetY: CGFloat = 0
-    
-}
-
 extension UIView {
     
     /// 开始加载动画
     /// - Parameter message: 加载提示文字
     public func loading(_ message: String? = nil) {
-        if let loadView = viewWithTag(LoadView.loadViewTag) as? LoadView {
+        if let loadView = viewWithTag(LoadViewConfig.shared.loadViewTag) as? LoadView {
             loadView.status = .loading
             loadView.tapGesture.isEnabled = false
         } else {
@@ -227,7 +240,7 @@ extension UIView {
     
     /// 结束加载动画
     public func endLoading() {
-        viewWithTag(LoadView.loadViewTag)?.removeFromSuperview()
+        viewWithTag(LoadViewConfig.shared.loadViewTag)?.removeFromSuperview()
     }
     
     /// 加载失败
@@ -236,8 +249,13 @@ extension UIView {
     ///   - image: 图片
     ///   - imageViewOffSetY: 图片竖向偏移量
     ///   - reloadClosure: 重新加载闭包
-    public func endLoadingWithError(_ message: String? = LoadView.defaultErrorMessage, image: UIImage? = LoadView.defaultErrorImage, imageViewOffSetY: CGFloat = LoadView.defaultImageViewOffSetY, reloadClosure: (() -> Void)? = nil) {
-        if let loadView = viewWithTag(LoadView.loadViewTag) as? LoadView {
+    public func endLoadingWithError(
+        _ message: String? = LoadViewConfig.shared.errorMessage,
+        image: UIImage? = LoadViewConfig.shared.errorImage,
+        imageViewOffSetY: CGFloat = LoadViewConfig.shared.imageViewOffSetY,
+        reloadClosure: (() -> Void)? = nil
+    ) {
+        if let loadView = viewWithTag(LoadViewConfig.shared.loadViewTag) as? LoadView {
             loadView.errorMessage = message
             loadView.errorImage = image
             loadView.status = .error
@@ -258,8 +276,12 @@ extension UIView {
     ///   - message: 提示文字
     ///   - image: 图片
     ///   - imageViewOffSetY: 图片竖向偏移量
-    public func endLoadingWithNoData(_ message: String? = LoadView.defaultNodataMessage, image: UIImage? = LoadView.defaultNodataImage, imageViewOffSetY: CGFloat = LoadView.defaultImageViewOffSetY) {
-        if let loadView = viewWithTag(LoadView.loadViewTag) as? LoadView {
+    public func endLoadingWithNoData(
+        _ message: String? = LoadViewConfig.shared.nodataMessage,
+        image: UIImage? = LoadViewConfig.shared.nodataImage,
+        imageViewOffSetY: CGFloat = LoadViewConfig.shared.imageViewOffSetY
+    ) {
+        if let loadView = viewWithTag(LoadViewConfig.shared.loadViewTag) as? LoadView {
             loadView.nodataMessage = message
             loadView.nodataImage = image
             loadView.status = .nodata
@@ -269,13 +291,9 @@ extension UIView {
             loadView.show(in: self, status: .nodata, nodataMessage: message, nodataImage: image)
             loadView.imageViewOffSetY = imageViewOffSetY
         }
-        if let loadView = viewWithTag(LoadView.loadViewTag) as? LoadView {
+        if let loadView = viewWithTag(LoadViewConfig.shared.loadViewTag) as? LoadView {
             sendSubviewToBack(loadView)
         }
     }
     
-    public func endLoadingWithCount(_ count: Int) {
-        
-    }
-
 }

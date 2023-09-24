@@ -735,8 +735,8 @@ extension RecycleView: UIGestureRecognizerDelegate {
 
 extension RecycleView: RecyclePageControlDelegate {
     
-    open func pageControlDidSelect(pageControl: UIView, atPage currentPage: Int) {
-        scrollToItem(at: currentPage, animated: true)
+    public func recyclePageControl(_ pageControl: UIView, didSelectAt page: Int) {
+        scrollToItem(at: page, animated: true)
     }
     
 }

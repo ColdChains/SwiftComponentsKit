@@ -9,7 +9,7 @@ import UIKit
 
 public extension UIDevice {
     
-    // 设备的类型
+    /// 设备的类型
     var deviceType: String {
         
         var systemInfo = utsname()
@@ -80,7 +80,7 @@ public extension UIDevice {
     }
     
     var desc: String {
-        return "\(deviceType), iOS \(systemVersion), APP \(Bundle.main.version)"
+        return "\(deviceType), iOS \(systemVersion), \(Bundle.main.name) \(Bundle.main.version)"
     }
     
 }

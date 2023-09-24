@@ -33,8 +33,9 @@ public let TabBarHeight: CGFloat       = StatusBarHeight > 20 ? 83 : 49
 /// Home条高度
 public let HomeBarHeight: CGFloat      = StatusBarHeight > 20 ? 34 : 0
 /// 底部间距
-public let BottomMargin: CGFloat       = StatusBarHeight > 20 ? 44 : BaseConfig.shared.margin
+public let BottomMargin: CGFloat       = StatusBarHeight > 20 ? 44 : 16
 
 public let ISiPhoneX                   = StatusBarHeight > 20 ? true : false
 
 public let ISiPhoneSE                  = ScreenWidth < 375 ? true : false
+

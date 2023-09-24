@@ -57,6 +57,8 @@ open class NavigationBar: UIView {
             }
             let closeItem = closeItem
             self.closeItem = closeItem
+            let view = titleView
+            self.titleView = view
         }
     }
 
@@ -78,6 +80,8 @@ open class NavigationBar: UIView {
                 make.width.equalTo(w)
                 make.height.equalTo(h)
             }
+            let view = titleView
+            self.titleView = view
         }
     }
 
@@ -102,6 +106,8 @@ open class NavigationBar: UIView {
             if rightItem.allTargets.count == 0 {
                 rightItem.addTarget(self, action: #selector(rightItemAction(_:)), for: .touchUpInside)
             }
+            let view = titleView
+            self.titleView = view
         }
     }
 
@@ -130,7 +136,7 @@ open class NavigationBar: UIView {
     /// 分割线 默认显示
     open lazy var dividerView: UIView = {
         let view = UIView()
-        view.backgroundColor = BaseConfig.shared.dividerColor
+        view.backgroundColor = BaseViewControllerConfig.shared.navigationDividerColor
         return view
     }()
 
@@ -151,7 +157,7 @@ open class NavigationBar: UIView {
     public override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: NavigationBarHeight))
         
-        backgroundColor = BaseConfig.shared.navigationBarColor
+        backgroundColor = BaseViewControllerConfig.shared.navigationBarColor
         buttonHeight = self.frame.size.height - StatusBarHeight
         
         addSubview(dividerView)
@@ -160,21 +166,11 @@ open class NavigationBar: UIView {
             make.height.equalTo(0.5)
         }
         
-        titleLabel = UILabel(frame: CGRect(x: 11, y: 11, width: 44, height: 44))
-        titleLabel?.font = BaseConfig.shared.navigationTitleFont
-        titleLabel?.textColor = BaseConfig.shared.navigationTitleColor
+        titleLabel = UILabel()
+        titleLabel?.font = BaseViewControllerConfig.shared.navigationTitleFont
+        titleLabel?.textColor = BaseViewControllerConfig.shared.navigationTitleColor
         titleLabel?.textAlignment = .center
         titleView = titleLabel
-        guard let titleView = titleView else {
-            return
-        }
-        addSubview(titleView)
-        titleView.snp.makeConstraints { make in
-            make.bottom.centerX.equalToSuperview()
-            make.height.equalTo(buttonHeight)
-            make.left.greaterThanOrEqualTo(closeItem?.snp.right ?? leftItem?.snp.right ?? self)
-            make.right.lessThanOrEqualTo(rightItem?.snp.left ?? self)
-        }
     }
     
     required public init?(coder: NSCoder) {
@@ -184,12 +180,12 @@ open class NavigationBar: UIView {
     /// 设置返回按钮
     open func addLeftItem() {
         let button = UIButton()
-        button.titleLabel?.font = BaseConfig.shared.navigationTitleFont
-        button.setTitleColor(BaseConfig.shared.navigationTitleColor, for: .normal)
+        button.titleLabel?.font = BaseViewControllerConfig.shared.navigationTitleFont
+        button.setTitleColor(BaseViewControllerConfig.shared.navigationTitleColor, for: .normal)
         if #available(iOS 13.0, *) {
-            button.setImage(BaseConfig.shared.backButtonImage ?? UIImage(named: "icon_navigation_back@3x", in: Bundle(for: NavigationBar.self), with: nil), for: .normal)
+            button.setImage(BaseViewControllerConfig.shared.backButtonImage ?? UIImage(named: "icon_navigation_back@3x", in: Bundle(for: NavigationBar.self), with: nil), for: .normal)
         } else {
-            button.setImage(BaseConfig.shared.backButtonImage ?? UIImage(named: "icon_navigation_back@3x", in: Bundle(for: NavigationBar.self), compatibleWith: nil), for: .normal)
+            button.setImage(BaseViewControllerConfig.shared.backButtonImage ?? UIImage(named: "icon_navigation_back@3x", in: Bundle(for: NavigationBar.self), compatibleWith: nil), for: .normal)
         }
         button.addTarget(self, action: #selector(leftItemAction(_:)), for: .touchUpInside)
         leftItem = button
@@ -198,11 +194,11 @@ open class NavigationBar: UIView {
     /// 设置关闭按钮
     open func addCloseItem() {
         let button = UIButton()
-        button.titleLabel?.font = BaseConfig.shared.navigationTitleFont
+        button.titleLabel?.font = BaseViewControllerConfig.shared.navigationTitleFont
         if #available(iOS 13.0, *) {
-            button.setImage(BaseConfig.shared.closeButtonImage ?? UIImage(named: "icon_navigation_close@3x", in: Bundle(for: NavigationBar.self), with: nil), for: .normal)
+            button.setImage(BaseViewControllerConfig.shared.closeButtonImage ?? UIImage(named: "icon_navigation_close@3x", in: Bundle(for: NavigationBar.self), with: nil), for: .normal)
         } else {
-            button.setImage(BaseConfig.shared.closeButtonImage ?? UIImage(named: "icon_navigation_close@3x", in: Bundle(for: NavigationBar.self), compatibleWith: nil), for: .normal)
+            button.setImage(BaseViewControllerConfig.shared.closeButtonImage ?? UIImage(named: "icon_navigation_close@3x", in: Bundle(for: NavigationBar.self), compatibleWith: nil), for: .normal)
         }
         button.addTarget(self, action: #selector(closeItemAction(_:)), for: .touchUpInside)
         button.isHidden = true

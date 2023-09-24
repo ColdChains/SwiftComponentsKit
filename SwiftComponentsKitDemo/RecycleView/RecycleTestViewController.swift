@@ -6,27 +6,30 @@
 //
 
 import UIKit
+import SwiftBaseKit
 import SwiftComponentsKit
 
 class RecycleTestViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         showNavigationBar = true
+        navigationBar?.titleLabel?.text = "PresentMenuBarController"
         
         // 卡片效果
-        let recycleView = RecycleView()
-        recycleView.delegate = self
-        recycleView.dataSource = self
-        recycleView.edgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
-        recycleView.minSpacing = 12
-        recycleView.canLoop = false
-        recycleView.tag = 100
+        let cardView = RecycleView()
+        cardView.delegate = self
+        cardView.dataSource = self
+        cardView.edgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+        cardView.minSpacing = 12
+        cardView.canLoop = false
+        cardView.tag = 100
         
-        view.addSubview(recycleView)
-        recycleView.snp.makeConstraints { make in
+        view.addSubview(cardView)
+        cardView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(88)
+            make.top.equalTo(NavigationBarHeight + 10)
             make.height.equalTo(100)
         }
         
@@ -43,13 +46,13 @@ class RecycleTestViewController: ViewController {
         control.backgroundColor = .lightGray
         control.pageIndicatorTintColor = .red
         control.currentPageIndicatorTintColor = .white
-        control.delegate = recycleView
+        control.delegate = cardView
         bannerView.pageControl = control
         
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(recycleView.snp.bottom).offset(44)
+            make.top.equalTo(cardView.snp.bottom).offset(44)
             make.height.equalTo(333)
         }
         

@@ -69,7 +69,7 @@ public extension UIViewController {
         dismissPresentViewController()
         present(actionSheet, animated: true, completion: nil)
     }
-
+    
 }
 
 public extension UIViewController {
@@ -78,13 +78,11 @@ public extension UIViewController {
         if className == nil {
             return nil
         }
-        if  let appName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String? {
-            let classStringName = "\(appName).\(className!)"
-            let classType = NSClassFromString(classStringName) as? UIViewController.Type
-            if let type = classType {
-                let newVC = type.init()
-                return newVC
-            }
+        let classStringName = "\(Bundle.main.name).\(className!)"
+        let classType = NSClassFromString(classStringName) as? UIViewController.Type
+        if let type = classType {
+            let newVC = type.init()
+            return newVC
         }
         return nil;
     }

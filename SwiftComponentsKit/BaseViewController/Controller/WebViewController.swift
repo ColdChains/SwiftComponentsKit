@@ -22,13 +22,16 @@ open class WebViewController: ViewController {
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .allButUpsideDown
     }
-
-    /// 链接地址
+    
     open var urlString = ""
-
+    
+    open var url: URL?
+    
+    open var request: URLRequest?
+    
     /// 标题
     open var titleString = ""
-
+    
     /// 是否取Web页面内的标题 默认false
     open var autoTitle = false {
         didSet {
@@ -45,23 +48,18 @@ open class WebViewController: ViewController {
             }
         }
     }
-
+    
     /// webView顶部间距 默认导航栏的高度
     open var webViewTopMargin: CGFloat = NavigationBarHeight {
         didSet {
-            if !isViewLoaded {
-                return
-            }
-            if let _ = webView.superview {
-                webView.snp.updateConstraints { make in
-                    make.top.equalTo(webViewTopMargin)
-                }
-            }
-            if let _ = progressView.superview {
-                progressView.snp.updateConstraints { make in
-                    make.top.equalTo(webViewTopMargin)
-                }
-            }
+            updateView()
+        }
+    }
+    
+    /// 横屏webView顶部间距 默认44
+    open var landscapeScreenWebViewTopMargin: CGFloat = 44 {
+        didSet {
+            updateView()
         }
     }
     
@@ -74,19 +72,53 @@ open class WebViewController: ViewController {
         }
     }
     
+    /// 缓存策略
     open var cachePolicy: NSURLRequest.CachePolicy = .useProtocolCachePolicy
     
+    /// 超时时间 默认30s
+    open var timeoutInterval: TimeInterval = 30
+    
+    /// 显示进度条 默认true
+    open var showProgress = true
+    
+    open var webViewConfiguration: WKWebViewConfiguration?
+    
     open lazy var webView: WKWebView = {
-        let preferences = WKPreferences()
-        preferences.javaScriptCanOpenWindowsAutomatically = true
-        preferences.minimumFontSize = 12
         
-        let config = WKWebViewConfiguration()
-        config.userContentController = WKUserContentController()
-        config.allowsInlineMediaPlayback = true
-        config.preferences = preferences
+        let webView: WKWebView!
         
-        let webView = WKWebView(frame: view.bounds, configuration: config)
+        if let config = webViewConfiguration {
+            webView = WKWebView(frame: view.bounds, configuration: config)
+        } else {
+            
+            let preference = WKPreferences()
+            // 最小字体大小 当将javaScriptEnabled属性设置为false时，可以看到明显的效果
+            preference.minimumFontSize = 0
+            // 设置是否支持javaScript 默认是支持的
+            preference.javaScriptEnabled = true
+            // 设置是否允许不经过用户交互由javaScript自动打开窗口
+            preference.javaScriptCanOpenWindowsAutomatically = true
+
+            let config = WKWebViewConfiguration()
+            config.preferences = preference
+
+            // 设置是否将网页内容全部加载到内存后再渲染
+            config.suppressesIncrementalRendering = false
+            // 设置HTML5视频是否允许网页播放 设置为false则会使用本地播放器
+            config.allowsInlineMediaPlayback = true
+            // 设置是否允许ariPlay播放
+            config.allowsAirPlayForMediaPlayback = true
+            // 设置视频是否需要用户手动播放  设置为false则会允许自动播放
+            // config.requiresUserActionForMediaPlayback = false
+            // 设置是否允许画中画技术 在特定设备上有效
+            // config.allowsPictureInPictureMediaPlayback = true
+            // 设置选择模式 是按字符选择 还是按模块选择
+            config.selectionGranularity = .character
+            // 设置请求的User-Agent信息中应用程序名称 iOS9后可用
+            config.applicationNameForUserAgent = Bundle.main.name
+            
+            webView = WKWebView(frame: view.bounds, configuration: config)
+        }
         webView.uiDelegate = self
         webView.navigationDelegate = self;
         webView.isOpaque = false
@@ -120,16 +152,15 @@ open class WebViewController: ViewController {
         
         view.addSubview(webView)
         webView.snp.makeConstraints { make in
-            make.top.equalTo(webViewTopMargin)
-            make.left.right.bottom.equalToSuperview()
+            make.top.left.right.bottom.equalToSuperview()
         }
         
         view.addSubview(progressView)
         progressView.snp.makeConstraints { make in
-            make.top.equalTo(webViewTopMargin)
-            make.left.right.equalToSuperview()
+            make.top.left.right.equalToSuperview()
             make.height.equalTo(2)
         }
+        updateView()
         
         let scrollViewAdjustmentNever = scrollViewAdjustmentNever
         self.scrollViewAdjustmentNever = scrollViewAdjustmentNever
@@ -144,8 +175,12 @@ open class WebViewController: ViewController {
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath {
         case "estimatedProgress":
-            if let value = change?[.newKey] {
-                print(value)
+            if let value = change?[.newKey] as? CGFloat {
+                if BaseViewControllerConfig.shared.logEnabled {
+                    printLog("\(keyPath ?? "") \(value)")
+                }
+                progressView.progress = value
+                progressView.isHidden = !showProgress || value >= 1
             }
             break
         case "title":
@@ -166,33 +201,42 @@ open class WebViewController: ViewController {
     
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        guard let _ = navigationBar else {
-                return
+        updateView()
+    }
+    
+    private func updateView() {
+        if !isViewLoaded {
+            return
+        }
+        if let _ = webView.superview {
+            webView.snp.updateConstraints { make in
+                make.top.equalTo(isLandscapeScreen ? landscapeScreenWebViewTopMargin : webViewTopMargin)
             }
-        if UIDevice.current.orientation == .portrait {
-            navigationBar?.snp.updateConstraints({ make in
-                make.height.equalTo(NavigationBarHeight)
-            })
-        } else {
-            navigationBar?.snp.updateConstraints({ make in
-                make.height.equalTo(44)
-            })
+        }
+        if let _ = progressView.superview {
+            progressView.snp.updateConstraints { make in
+                make.top.equalTo(isLandscapeScreen ? landscapeScreenWebViewTopMargin : webViewTopMargin)
+            }
         }
     }
     
-    open func reloadData() {
-        var encode = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? urlString
-        encode = encode.replacingOccurrences(of: "/%23", with: "/#")
-        guard let url = URL(string: encode) else {
-                return
-            }
-        let request = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: 30)
-        if request.url?.absoluteString.count ?? 0 > 0 {
-            webView.load(request)
+    open func reloadData(request: URLRequest? = nil) {
+        var req: URLRequest?
+        if let temp = request {
+            req = temp
+        } else if let temp = self.request {
+            req = temp
+        } else if let url = self.url {
+            req = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
+        } else if let url = URL(string: urlString) {
+            req = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
+        }
+        if let temp = req, temp.url?.absoluteString.count ?? 0 > 0 {
+            webView.load(temp)
         }
     }
     
-    open override func backAction() {
+    open override func navigationBarDidSelectLeftItem() {
         if autoTitle && webView.canGoBack {
             webView.goBack()
         } else {
@@ -204,82 +248,85 @@ open class WebViewController: ViewController {
 
 extension WebViewController: WKNavigationDelegate {
     
-    open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        if BaseConfig.shared.logEnabled {
-            printLog()
-        }
-    }
-    
-    open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        if BaseConfig.shared.logEnabled {
-            printLog()
-        }
-    }
-    
-    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if BaseConfig.shared.logEnabled {
-            printLog()
-        }
-    }
-    
-    open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        if BaseConfig.shared.logEnabled {
-            printLog()
-        }
-    }
-    
     open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url,
-            let scheme = url.scheme,
-            scheme == "tel", let resourceSpecifier = (url as NSURL).resourceSpecifier {
-            guard let url = URL(string: "telprompt://" + resourceSpecifier) else {
-                return
-            }
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
+           let scheme = url.scheme,
+           scheme == "tel", let resourceSpecifier = (url as NSURL).resourceSpecifier {
+            if let url = URL(string: "telprompt://" + resourceSpecifier) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
         decisionHandler(.allow)
-        if BaseConfig.shared.logEnabled {
-            printLog()
-        }
-    }
-    
-    open func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        if BaseConfig.shared.logEnabled {
-            printLog()
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
         }
     }
     
     open func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.allow)
-        if BaseConfig.shared.logEnabled {
-            printLog()
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
         }
     }
     
-}
-
-extension WebViewController: WKScriptMessageHandler {
-    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print(message.body)
-        if BaseConfig.shared.logEnabled {
-            printLog(message.body)
+    open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
         }
     }
+    
+    open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
+        }
+    }
+    
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
+        }
+    }
+    
+    open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
+        }
+    }
+    
+    open func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
+        }
+    }
+    
 }
 
 extension WebViewController: WKUIDelegate {
     
     open func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
+        }
         return webView
+//        if let mainFrame = navigationAction.targetFrame?.isMainFrame, !mainFrame {
+//            webView.load(navigationAction.request)
+//        }
+//        return nil
+    }
+    
+    public func webViewDidClose(_ webView: WKWebView) {
+        if BaseViewControllerConfig.shared.logEnabled {
+            printLog(#function)
+        }
     }
     
     open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         let alertController = UIAlertController(title: .none, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "确定", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: BaseViewControllerConfig.shared.confirmText, style: .default, handler: { _ in
             completionHandler()
         }))
         present(alertController, animated: true, completion: nil)
@@ -287,10 +334,10 @@ extension WebViewController: WKUIDelegate {
     
     open func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         let alertController = UIAlertController(title: .none, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "确定", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: BaseViewControllerConfig.shared.confirmText, style: .default, handler: { _ in
             completionHandler(true)
         }))
-        alertController.addAction(UIAlertAction(title: "取消", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: BaseViewControllerConfig.shared.cancelText, style: .default, handler: { _ in
             completionHandler(false)
         }))
         present(alertController, animated: true, completion: nil)
@@ -301,17 +348,26 @@ extension WebViewController: WKUIDelegate {
         alertController.addTextField { (textField) in
             textField.text = defaultText
         }
-        alertController.addAction(UIAlertAction(title: "确定", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: BaseViewControllerConfig.shared.confirmText, style: .default, handler: { _ in
             if let text = alertController.textFields?.first?.text {
                 completionHandler(text)
             } else {
                 completionHandler(defaultText)
             }
         }))
-        alertController.addAction(UIAlertAction(title: "取消", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: BaseViewControllerConfig.shared.cancelText, style: .default, handler: { _ in
             completionHandler(nil)
         }))
         present(alertController, animated: true, completion: nil)
     }
     
 }
+
+//extension WebViewController: WKScriptMessageHandler {
+//    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+//        print(message.body)
+//        if BaseConfig.shared.logEnabled {
+//            printLog(message.body)
+//        }
+//    }
+//}

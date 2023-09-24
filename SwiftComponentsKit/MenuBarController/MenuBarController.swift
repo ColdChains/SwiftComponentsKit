@@ -948,7 +948,7 @@ extension MenuBarController: UIScrollViewDelegate {
 
 extension MenuBarController: MenuBarDelegate {
 
-    open func menuBarDidSelect(_ menuBar: (UIView & MenuBarDelegate), at index: Int) {
+    public func menuBarDidSelect(_ menuBar: (UIView & MenuBarDelegate), at index: Int) {
         scroll(to: index, animated: scrollAnimated)
     }
 
@@ -956,7 +956,7 @@ extension MenuBarController: MenuBarDelegate {
 
 extension MenuBarController: MenuBarScrollViewGestureDelegate {
 
-    open func menuBarScrollView(_ menuBarScrollView: MenuBarScrollView, gestureShouldRecognizeSimultaneouslyWith responder: UIResponder) -> Bool {
+    public func menuBarScrollView(_ menuBarScrollView: MenuBarScrollView, gestureShouldRecognizeSimultaneouslyWith responder: UIResponder) -> Bool {
         for viewController in viewControllers {
             if let menuBarController = viewController as? MenuBarController {
                 for subViewController in menuBarController.viewControllers {
@@ -977,7 +977,7 @@ extension MenuBarController: MenuBarScrollViewGestureDelegate {
 
 extension MenuBarController: MenuBarObserverDelegate {
     
-    open func menuBarController(_ menuBarController: MenuBarController, didAddObserver scrollView: UIScrollView) {
+    public func menuBarController(_ menuBarController: MenuBarController, didAddObserver scrollView: UIScrollView) {
         if observerDictionary[String(format: "%p", scrollView)] == nil {
             observerDictionary[String(format: "%p", scrollView)] = 1
             scrollView.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)

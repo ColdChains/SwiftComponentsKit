@@ -367,7 +367,7 @@ open class MenuBar: UIScrollView {
 
 extension MenuBar: MenuBarDelegate {
     
-    open func menuBarDidSelect(_ menuBar: (UIView & MenuBarDelegate), at index: Int) {
+    public func menuBarDidSelect(_ menuBar: (UIView & MenuBarDelegate), at index: Int) {
         currentIndex = index
     }
     

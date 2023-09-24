@@ -1,6 +1,6 @@
 //
 //  MenuBarContentViewController.swift
-//  SwiftComponentsKitDemo
+//  MenuBarControllerDemo
 //
 //  Created by lax on 2022/9/20.
 //

@@ -805,7 +805,7 @@ extension MenuBarView: UIScrollViewDelegate {
 
 extension MenuBarView: MenuBarDelegate {
 
-    open func menuBarDidSelect(_ menuBar: (UIView & MenuBarDelegate), at index: Int) {
+    public func menuBarDidSelect(_ menuBar: (UIView & MenuBarDelegate), at index: Int) {
         scroll(to: index, animated: scrollAnimated)
     }
 
@@ -813,7 +813,7 @@ extension MenuBarView: MenuBarDelegate {
 
 extension MenuBarView: MenuBarScrollViewGestureDelegate {
 
-    open func menuBarScrollView(_ menuBarScrollView: MenuBarScrollView, gestureShouldRecognizeSimultaneouslyWith responder: UIResponder) -> Bool {
+    public func menuBarScrollView(_ menuBarScrollView: MenuBarScrollView, gestureShouldRecognizeSimultaneouslyWith responder: UIResponder) -> Bool {
         for view in views {
             if let menuBarView = view as? MenuBarView {
                 for subView in menuBarView.views {

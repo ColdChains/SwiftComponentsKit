@@ -39,8 +39,8 @@ open class TabBarController: UITabBarController {
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.barTintColor = BaseConfig.shared.tabBarColor
-        tabBar.tintColor = BaseConfig.shared.tabBarSelectedColor
+        tabBar.barTintColor = BaseViewControllerConfig.shared.tabBarColor
+        tabBar.tintColor = BaseViewControllerConfig.shared.tabBarSelectedColor
         modalPresentationStyle = viewControllers?[selectedIndex].modalPresentationStyle ?? .fullScreen
     }
 

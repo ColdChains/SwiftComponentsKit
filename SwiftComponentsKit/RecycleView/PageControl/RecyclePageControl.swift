@@ -10,13 +10,13 @@ import UIKit
 public protocol RecyclePageControlDelegate: NSObjectProtocol {
 
     /// 点击指示器
-    func recyclePageControl(_ pageControl: UIView, DidSelectAt page: Int)
+    func recyclePageControl(_ pageControl: UIView, didSelectAt page: Int)
 
 }
 
 public extension RecyclePageControlDelegate {
 
-    func recyclePageControl(_ pageControl: UIView, DidSelectAt page: Int) {}
+    func recyclePageControl(_ pageControl: UIView, didSelectAt page: Int) {}
 
 }
 
@@ -34,18 +34,18 @@ open class RecyclePageControl: UIPageControl {
     }
     
     @objc private func pageControlValueChanged() {
-        delegate?.recyclePageControl(self, DidSelectAt: currentPage)
+        delegate?.recyclePageControl(self, didSelectAt: currentPage)
     }
 
 }
 
 extension RecyclePageControl: RecyclePageControlProtocol {
     
-    open func recyclePageControlSetNumberOfPages(_ numberOfPages: Int) {
+    public func recyclePageControlSetNumberOfPages(_ numberOfPages: Int) {
         self.numberOfPages = numberOfPages
     }
     
-    open func recyclePageControlSetCurrentPage(_ currentPage: Int) {
+    public func recyclePageControlSetCurrentPage(_ currentPage: Int) {
         self.currentPage = currentPage
     }
     
